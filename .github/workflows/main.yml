@@ -28,6 +28,7 @@ jobs:
           push: true
           tags: |
             fabricioveronez/web-color:blue
+            fabricioveronez/web-page:blue
 
       - name: Criando o arquivo HTML com o green page
         run: sed "s/{{COLOR}}/green/g" ./templates/index.html.template > ./templates/index.html      
@@ -40,6 +41,7 @@ jobs:
           push: true
           tags: |
             fabricioveronez/web-color:green
+            fabricioveronez/web-page:green
 
 
     
