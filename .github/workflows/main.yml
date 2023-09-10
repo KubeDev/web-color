@@ -23,8 +23,8 @@ jobs:
       - name: Construção da imagem Docker do blue page
         uses: docker/build-push-action@v3.2.0
         with: 
-          context: ./
-          file: ./Dockerfile
+          context: ./src
+          file: ./src/Dockerfile
           push: true
           tags: |
             fabricioveronez/web-color:blue
