@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PWD }}
       
       - name: Criando o arquivo HTML com o blue page
-        run: sed "s/{{COLOR}}/blue/g" ./templates/index.html.template > ./templates/index.html      
+        run: sed "s/{{COLOR}}/blue/g" ./src/templates/index.html.template > ./src/templates/index.html      
 
       - name: Construção da imagem Docker do blue page
         uses: docker/build-push-action@v3.2.0
@@ -31,13 +31,13 @@ jobs:
             fabricioveronez/web-page:blue
 
       - name: Criando o arquivo HTML com o green page
-        run: sed "s/{{COLOR}}/green/g" ./templates/index.html.template > ./templates/index.html      
+        run: sed "s/{{COLOR}}/green/g" ./src/templates/index.html.template > ./src/templates/index.html      
 
       - name: Construção da imagem Docker do green page
         uses: docker/build-push-action@v3.2.0
         with: 
-          context: ./
-          file: ./Dockerfile
+          context: ./src
+          file: ./src/Dockerfile
           push: true
           tags: |
             fabricioveronez/web-color:green
