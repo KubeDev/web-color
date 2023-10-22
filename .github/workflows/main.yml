@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     
 jobs:
-  CI:
+  CI-BLUE:
     runs-on: ubuntu-latest
     
     steps:
@@ -30,6 +30,17 @@ jobs:
           tags: |
             fabricioveronez/web-color:blue
             fabricioveronez/web-page:blue
+
+  CI-GREEN:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.1.0
+      
+      - name: Autenticação no Docker Hub
+        uses: docker/login-action@v2.1.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PWD }}
 
       - name: Criando o arquivo HTML com o green page
         run: sed "s/{{COLOR}}/green/g" ./src/templates/index.html.template > ./src/templates/index.html      
